@@ -223,10 +223,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   }).then(function(j){
     var cs=(j.comisiones||[]); var tot=0,sum=0; cs.forEach(function(x){ tot+=x.n; sum+=x.rating*x.n; });
     if(tot>0) evaluate(sum/tot);
-  }).catch(function(){
-    // 2) fallback: leer el rating mostrado (demo / sin login)
-    var t=0; var iv=setInterval(function(){ t++; var r=ratingFromDOM(); if(r!=null){ clearInterval(iv); evaluate(r); } if(t>40) clearInterval(iv); }, 300);
-  });
+  }).catch(function(){ /* sin login no hay rating real para gatear: el CTA queda habilitado. El bloqueo solo aplica con datos reales (login). */ });
 })();
 </script>
 
